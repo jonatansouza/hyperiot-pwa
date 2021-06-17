@@ -1,0 +1,17 @@
+<ion-content slot="fixed">
+  <div class="light-box">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [formControl]="email"  type="email" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input [formControl]="password" type="password" clearInput></ion-input>
+    </ion-item>
+    <div class="footer">
+      <a (click)="forgot()">Esqueceu sua senha?</a>
+      <ion-button [disabled]="!email.valid || !password.valid">Entrar</ion-button>
+      <ion-button fill="outline" (click)="register()">Cadastrar-se</ion-button>
+    </div>
+  </div>
+</ion-content>
