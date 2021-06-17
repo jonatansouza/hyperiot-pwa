@@ -1,3 +1,4 @@
+import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-device.page.scss'],
 })
 export class CreateDevicePage implements OnInit {
-
+  description = new FormControl('', [Validators.required]);
+  location = new FormControl('', [Validators.required]);
+  id = new FormControl('', [Validators.required]);
   constructor() { }
 
   ngOnInit() {

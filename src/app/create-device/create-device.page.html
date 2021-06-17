@@ -7,5 +7,22 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h3>cadastrar</h3>
+  <div class="light-box">
+    <h1>Cadastrar Dispositivo</h1>
+    <ion-item>
+      <ion-label position="floating">Identificador</ion-label>
+      <ion-input [formControl]="id"  type="text" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-textarea [formControl]="description"  type="text" clearInput></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Localização dos recursos</ion-label>
+      <ion-input [formControl]="location"  type="text" clearInput></ion-input>
+    </ion-item>
+    <ion-button style="margin-top: 16px;" (click)="onClick()" expand="block" fill="clear" shape="round">
+      Cadastrar
+    </ion-button>
+  </div>
 </ion-content>

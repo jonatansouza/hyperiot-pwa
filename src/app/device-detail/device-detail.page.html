@@ -7,5 +7,23 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h3>Detalhe</h3>
+  <h1>Dispositivo XPTO</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, ratione cupiditate? Sapiente repellendus, alias ipsam ea obcaecati assumenda, quidem libero ipsum ratione deserunt, laboriosam perferendis. Velit magnam veniam quisquam accusamus!</p>
+  <div class="d-flex-beetwen">
+    <p>Compartilhado com:</p>
+    <ion-button (click)="grant()" fill="clear" shape="round" color="success">
+      Adicionar novo acesso
+    </ion-button>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>Bar</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="revoke()" color="danger">
+          <ion-icon slot="start" name="trash"></ion-icon>
+          Revogar acesso
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
 </ion-content>
