@@ -19,4 +19,7 @@ export class CreateDevicePage implements OnInit {
   get disabled() {
     return !this.description.valid || !this.id.valid || !this.location.valid || !this.bucket.valid;
   }
+  save() {
+
+  }
 }
