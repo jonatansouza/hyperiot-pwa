@@ -12,10 +12,11 @@ import { CreateDevicePage } from './create-device/create-device.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './login/login.page';
 import { HistoryPage } from './history/history.page';
+import { SharedPage } from './shared/shared.page';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage, HistoryPage],
+  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage, HistoryPage, SharedPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule ,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

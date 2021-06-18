@@ -5,6 +5,7 @@ import { DeviceDetailPage } from './device-detail/device-detail.page';
 import { HistoryPage } from './history/history.page';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
+import { SharedPage } from './shared/shared.page';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'create-device',
     component: CreateDevicePage
+  },
+  {
+    path: 'shared',
+    component: SharedPage
   },
   {
     path: 'login',

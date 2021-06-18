@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ export class UserInteractionsService {
 
   constructor(
     public alert: AlertController,
-    public toast: ToastController
+    public toast: ToastController,
+    public sheet: ActionSheetController
   ) { }
 
     async showAlert(header: string, message: string) {
@@ -66,6 +67,18 @@ export class UserInteractionsService {
           ]
         });
         await alert.present();
+      });
+    }
+
+    presentOptionsOnActionSheet(buttons: {text: string; handler: () => void}[]) {
+      return new Promise(async resolve => {
+        const action = await this.sheet.create({
+          mode: 'ios',
+          buttons
+        });
+        await action.present();
+        const result = await action.onDidDismiss();
+        resolve(result);
       });
     }
 }

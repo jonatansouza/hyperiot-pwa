@@ -12,7 +12,7 @@ export class AppComponent {
   };
   public appPages = [
     { title: 'Meus dados', url: '', icon: 'albums' },
-    { title: 'Compartilhados', url: '', icon: 'share' },
+    { title: 'Compartilhados', url: '/shared', icon: 'share' },
     { title: 'Sair', url: '/login', icon: 'log-out' },
   ];
   constructor(public router: Router) {}
