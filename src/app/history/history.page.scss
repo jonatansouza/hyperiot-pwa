@@ -1,0 +1,72 @@
+.timeline {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  height: 100%;
+  .timeline-left {
+    width: 48px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .timeline-icon {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    align-self: center;
+    background: var(--ion-color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-icon {
+      font-size: 1.5rem;
+    }
+  }
+  .timeline-content {
+    width: 80%;
+    border-bottom: 1px solid #c4c4c4;
+    .title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+    .description {
+      font-size: 0.9rem;
+    }
+    .update-time {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      color: gray;
+    }
+  }
+  .timeline-line {
+    margin: 0 auto;
+    width: 1px;
+    height: 50%;
+    position: absolute;
+    background: #c4c4c4;
+    content: "";
+    left: 50%;
+    z-index: -1;
+  }
+  .timeline-left::before {
+    @extend .timeline-line;
+    top: 0;
+  }
+  .timeline-left::after {
+    @extend .timeline-line;
+    bottom: 0;
+  }
+}
+.timeline:first-child {
+  .timeline-left::before {
+    display: none;
+  }
+}
+.timeline:last-child {
+  .timeline-left::after {
+    display: none;
+  }
+}

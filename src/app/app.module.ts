@@ -11,10 +11,11 @@ import { DeviceDetailPage } from './device-detail/device-detail.page';
 import { CreateDevicePage } from './create-device/create-device.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './login/login.page';
+import { HistoryPage } from './history/history.page';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage],
+  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage, HistoryPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule ,ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

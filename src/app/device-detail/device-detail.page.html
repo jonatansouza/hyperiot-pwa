@@ -7,7 +7,19 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h1>Dispositivo XPTO</h1>
+  <div class="d-flex-beetwen">
+    <h1>Dispositivo XPTO</h1>
+    <ion-buttons slot="end">
+      <ion-button (click)="delete()" color="danger">
+        <ion-icon slot="start" name="trash"></ion-icon>
+        Excluir
+      </ion-button>
+      <ion-button (click)="history()" color="tertiary">
+        <ion-icon slot="start" name="time"></ion-icon>
+        Histórico
+      </ion-button>
+    </ion-buttons>
+  </div>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, ratione cupiditate? Sapiente repellendus, alias ipsam ea obcaecati assumenda, quidem libero ipsum ratione deserunt, laboriosam perferendis. Velit magnam veniam quisquam accusamus!</p>
   <div class="d-flex-beetwen">
     <p>Compartilhado com:</p>
