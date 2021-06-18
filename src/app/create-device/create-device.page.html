@@ -15,13 +15,17 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Descrição</ion-label>
-      <ion-textarea [formControl]="description"  type="text" clearInput></ion-textarea>
+      <ion-input [formControl]="description"  type="text" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Bucket</ion-label>
+      <ion-input [formControl]="bucket"  type="text" clearInput></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Localização dos recursos</ion-label>
       <ion-input [formControl]="location"  type="text" clearInput></ion-input>
     </ion-item>
-    <ion-button style="margin-top: 16px;" (click)="onClick()" expand="block" fill="clear" shape="round">
+    <ion-button style="margin-top: 16px;" (click)="onClick()" [disabled]="disabled" expand="block" shape="round">
       Cadastrar
     </ion-button>
   </div>

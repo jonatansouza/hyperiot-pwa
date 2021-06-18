@@ -7,27 +7,29 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button size="small" (click)="create()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list>
-    <ion-item *ngFor="let device of devices" button (click)="detail(device)">
-      <ion-avatar >
-        <div class="rounded-center">
-          <ion-icon name="folder-outline"></ion-icon>
-        </div>
-      </ion-avatar>
-      <ion-label>
-        <span>
-          {{device?.sharedDataDescription}}
-        </span>
-        <br>
-        <span style="font-size: 0.8rem;">Autorizados: {{device?.sharedWith}}</span>
-        <br>
-        <small style="color: #c3c3c3;">Última modificação: {{device.timestamp | date : 'dd/MM/yyyy HH:mm' }}</small>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div class="container">
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button size="small" (click)="create()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-list>
+      <ion-item *ngFor="let device of devices" button (click)="detail(device)">
+        <ion-avatar >
+          <div class="rounded-center">
+            <ion-icon name="folder-outline"></ion-icon>
+          </div>
+        </ion-avatar>
+        <ion-label>
+          <span>
+            {{device?.sharedDataDescription}}
+          </span>
+          <br>
+          <span style="font-size: 0.8rem;">Autorizados: {{device?.sharedWith}}</span>
+          <br>
+          <small style="color: #c3c3c3;">Última modificação: {{device.timestamp | date : 'dd/MM/yyyy HH:mm' }}</small>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

@@ -7,35 +7,113 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="d-flex-beetwen">
-    <h1>Dispositivo XPTO</h1>
-    <ion-buttons slot="end">
-      <ion-button (click)="delete()" color="danger">
-        <ion-icon slot="start" name="trash"></ion-icon>
-        Excluir
-      </ion-button>
-      <ion-button (click)="history()" color="tertiary">
-        <ion-icon slot="start" name="time"></ion-icon>
-        Histórico
-      </ion-button>
-    </ion-buttons>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, ratione cupiditate? Sapiente repellendus, alias ipsam ea obcaecati assumenda, quidem libero ipsum ratione deserunt, laboriosam perferendis. Velit magnam veniam quisquam accusamus!</p>
-  <div class="d-flex-beetwen">
-    <p>Compartilhado com:</p>
-    <ion-button (click)="grant()" fill="clear" shape="round" color="success">
-      Adicionar novo acesso
-    </ion-button>
-  </div>
-  <ion-list>
-    <ion-item>
-      <ion-label>Bar</ion-label>
+  <div class="container">
+    <div class="d-flex-beetwen">
+      <h1 style="font-size: 1.1rem; font-weight: bold;">Dispositivo XPTO</h1>
       <ion-buttons slot="end">
-        <ion-button (click)="revoke()" color="danger">
+        <ion-button (click)="delete()" color="danger">
           <ion-icon slot="start" name="trash"></ion-icon>
-          Revogar acesso
+          <span class="large-only">Excluir</span>
+        </ion-button>
+        <ion-button (click)="history()" color="tertiary">
+          <ion-icon slot="start" name="time"></ion-icon>
+          <span class="large-only">
+            Histórico
+          </span>
         </ion-button>
       </ion-buttons>
-    </ion-item>
-  </ion-list>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, ratione cupiditate? Sapiente repellendus, alias ipsam ea obcaecati assumenda, quidem libero ipsum ratione deserunt, laboriosam perferendis. Velit magnam veniam quisquam accusamus!</p>
+    <div class="d-flex-beetwen">
+      <p>
+        <strong>Bucket:</strong>
+        xpto
+      </p>
+      <p>
+        <strong>Localização:</strong>
+        xpto
+      </p>
+    </div>
+    <div class="d-flex-beetwen" style="min-height: 70px;">
+      <p style="font-size: 0.9rem; color: gray; align-self: flex-end;">Compartilhado:</p>
+      <ion-fab-button color="success" (click)="grant()">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </ion-fab-button>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <ion-label>Bar</ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="revoke()" color="danger">
+            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
