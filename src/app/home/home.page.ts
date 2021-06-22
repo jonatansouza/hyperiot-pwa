@@ -1,3 +1,5 @@
+import { DeviceHelper } from './../device.helper';
+import { DeviceService } from './../device.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,34 +10,20 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   devices = [
-    {
-      id: 1,
-      sharedDataDescription: 'My Device description 1',
-      sharedWith: 'foo, bar',
-      timestamp: new Date().getTime()
-    },
-    {
-      id: 2,
-      sharedDataDescription: 'My Device description 2',
-      sharedWith: 'foo, bar',
-      timestamp: new Date().getTime()
-    },
-    {
-      id: 3,
-      sharedDataDescription: 'My Device description 3',
-      sharedWith: 'foo, bar',
-      timestamp: new Date().getTime()
-    }
   ];
   constructor(
-    public router: Router
+    public router: Router,
+    public deviceService: DeviceService,
   ) { }
 
   ngOnInit() {
+    this.deviceService.getDevices().subscribe((res: any) => {
+      this.devices = res;
+    });
   }
 
   detail({id}) {
-    this.router.navigate(['devices/', id]);
+    this.router.navigate(['devices/', DeviceHelper.parseId(id)]);
   }
   create() {
     this.router.navigate(['create-device']);

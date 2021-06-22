@@ -22,12 +22,16 @@
         </ion-avatar>
         <ion-label>
           <span>
+            {{device?.cleanId}}
+          </span>
+          <br>
+          <span>
             {{device?.sharedDataDescription}}
           </span>
           <br>
-          <span style="font-size: 0.8rem;">Autorizados: {{device?.sharedWith}}</span>
+          <span style="font-size: 0.8rem;">Autorizados: {{device?.sharedWith ? device?.sharedWith : 'Nenhuma autorização'}}</span>
           <br>
-          <small style="color: #c3c3c3;">Última modificação: {{device.timestamp | date : 'dd/MM/yyyy HH:mm' }}</small>
+          <small style="color: #c3c3c3;">Última modificação: {{device.updated | date : 'dd/MM/yyyy HH:mm' }}</small>
         </ion-label>
       </ion-item>
     </ion-list>

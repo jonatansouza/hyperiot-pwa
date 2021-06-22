@@ -13,6 +13,9 @@
       <ion-label position="floating">Identificador</ion-label>
       <ion-input [formControl]="id"  type="text" clearInput></ion-input>
     </ion-item>
+    <ion-item lines="none" *ngIf="idCheck">
+      <ion-badge [color]="idCheck.color" mode="ios">{{idCheck.message}}</ion-badge>
+    </ion-item>
     <ion-item>
       <ion-label position="floating">Descrição</ion-label>
       <ion-input [formControl]="description"  type="text" clearInput></ion-input>

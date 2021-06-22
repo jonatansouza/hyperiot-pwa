@@ -9,7 +9,7 @@
 <ion-content>
   <div class="container">
     <div class="d-flex-beetwen">
-      <h1 style="font-size: 1.1rem; font-weight: bold;">Dispositivo XPTO</h1>
+      <h1 style="font-size: 1.1rem; font-weight: bold;">{{device?.cleanId}}</h1>
       <ion-buttons slot="end">
         <ion-button (click)="delete()" color="danger">
           <ion-icon slot="start" name="trash"></ion-icon>
@@ -23,7 +23,10 @@
         </ion-button>
       </ion-buttons>
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, ratione cupiditate? Sapiente repellendus, alias ipsam ea obcaecati assumenda, quidem libero ipsum ratione deserunt, laboriosam perferendis. Velit magnam veniam quisquam accusamus!</p>
+    <div>
+      <small style="color: #c3c3c3;">Última modificação: {{device?.updated | date : 'dd/MM/yyyy HH:mm' }}</small>
+    </div>
+    <p>{{device?.sharedDataDescription}}</p>
     <div class="d-flex-beetwen">
       <p>
         <strong>Bucket:</strong>
@@ -41,75 +44,10 @@
       </ion-fab-button>
     </div>
     <ion-list>
-      <ion-item>
-        <ion-label>Bar</ion-label>
+      <ion-item *ngFor="let user of device?.sharedWithArr">
+        <ion-label>{{user}}</ion-label>
         <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
-            <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-      <ion-item>
-        <ion-label>Bar</ion-label>
-        <ion-buttons slot="end">
-          <ion-button (click)="revoke()" color="danger">
+          <ion-button (click)="revoke(user)" color="danger">
             <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
