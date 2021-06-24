@@ -41,8 +41,12 @@ export class DeviceService {
     return this.httpClient.post<DeviceModel>(url, payload);
   }
 
-  grantAccess(email: string) {
-    const url = environment.api + 'assets';
-    return this.httpClient.post<DeviceModel>(url, {email});
+  grantAccess(id: string, thirdUser: string) {
+    const url = environment.api + 'assets/' + id + '/grant-access';
+    return this.httpClient.post<DeviceModel>(url, {thirdUser});
+  }
+  revokeAccess(id: string, thirdUser: string) {
+    const url = environment.api + 'assets/' + id + '/revoke-access';
+    return this.httpClient.post<DeviceModel>(url, {thirdUser});
   }
 }

@@ -38,12 +38,13 @@
       </p>
     </div>
     <div class="d-flex-beetwen" style="min-height: 70px;">
-      <p style="font-size: 0.9rem; color: gray; align-self: flex-end;">Compartilhado:</p>
+      <p [class.invisible]="!device?.sharedWithArr?.length" style="font-size: 0.9rem; color: gray; align-self: flex-end;">Compartilhado:</p>
       <ion-fab-button color="success" (click)="grant()">
         <ion-icon name="person-add-outline"></ion-icon>
       </ion-fab-button>
     </div>
     <ion-list>
+      <p *ngIf="!device?.sharedWithArr?.length" style="color: gray; text-align: center;">Lista Vazia <br> <small>Clique acima para adicionar</small></p>
       <ion-item *ngFor="let user of device?.sharedWithArr">
         <ion-label>{{user}}</ion-label>
         <ion-buttons slot="end">

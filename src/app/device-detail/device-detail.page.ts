@@ -23,12 +23,9 @@ export class DeviceDetailPage {
     this.route.params
     .pipe(
       map(el => el.id),
-      switchMap(id => this.service.getDeviceById(id))
+      switchMap(id => this.getDeviceById(id))
     ).subscribe(device => {
-      this.device = {
-        ...device,
-        sharedWithArr: DeviceHelper.toArr(device?.sharedWith)
-      };
+      this.device = device;
     });
   }
 
@@ -36,21 +33,42 @@ export class DeviceDetailPage {
 
   }
 
-  async revoke(user) {
+  getDeviceById(id) {
+    return this.service.getDeviceById(id).pipe(map(device => ({
+      ...device,
+      sharedWithArr: DeviceHelper.toArr(device?.sharedWith)
+    })));
+  }
+
+  async revoke(email) {
     const confirm = await this.interaction.showAlert('Revogar acesso!', 'Tem certeza que deseja revogar acesso de xpto?');
-    if(confirm) {
+    if(!confirm) {
+      return;
+    }
+    try {
+      await this.service.revokeAccess(this.device.cleanId, email).toPromise();
+      this.device = await this.getDeviceById(this.device.cleanId).toPromise();
       this.interaction.presentToast('Acesso revogado!');
+    }
+    catch(e) {
+      this.interaction.presentToast('Erro de permissão!', 'danger');
     }
   }
 
   async grant() {
-    const email = await this.interaction.presentAlertPrompt() as string;
-    if(!email) {
+    const email = (await this.interaction.presentAlertPrompt() as string || '').trim().toLocaleLowerCase();
+    if(!email || !DeviceHelper.isEmail(email)) {
       this.interaction.presentToast('Email inválido!', 'danger');
       return;
     }
-    this.service.grantAccess(email);
-    this.interaction.presentToast('Acesso garantido!');
+    try {
+      await this.service.grantAccess(this.device.cleanId, email).toPromise();
+      this.device = await this.getDeviceById(this.device.cleanId).toPromise();
+      this.interaction.presentToast('Acesso garantido!');
+    }
+    catch(e) {
+      this.interaction.presentToast('Este usuário já possui acesso.', 'danger');
+    }
   }
 
   async delete() {
