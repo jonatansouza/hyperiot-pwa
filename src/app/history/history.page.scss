@@ -1,4 +1,8 @@
 .timeline {
+  ul {
+    margin-top: 0;
+    padding-left: 24px;
+  }
   display: flex;
   gap: 20px;
   position: relative;

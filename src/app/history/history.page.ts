@@ -1,13 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { DeviceModel } from './../device.model';
+import { DeviceService } from './../device.service';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
 })
-export class HistoryPage implements OnInit {
-  constructor() { }
+export class HistoryPage {
+  history: DeviceModel[];
+  id: string;
+  constructor(
+    public route: ActivatedRoute,
+    public device: DeviceService
+  ) { }
 
-  ngOnInit() {
+  ionViewWillEnter(){
+    this.route.params
+    .pipe(
+      map(el => el.id),
+      tap(id => this.id = id),
+      switchMap((id: string) => this.device.getHistory(id))
+    ).subscribe(history => {
+      this.history = history;
+    });
   }
 
+  ionViewWillLeave(){
+
+  }
+  isOwner(step: DeviceModel) {
+    return (step.ownerId === step.requester);
+  }
 }

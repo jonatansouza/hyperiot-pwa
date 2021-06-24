@@ -78,7 +78,6 @@ export class DeviceDetailPage {
     }
   }
   history() {
-    const id = 2;
-    this.router.navigate(['history', id]);
+    this.router.navigate(['history', this.device.cleanId]);
   }
 }

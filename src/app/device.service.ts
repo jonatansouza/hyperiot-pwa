@@ -13,10 +13,12 @@ export class DeviceService {
     const url = environment.api + 'assets';
     return this.httpClient.get<DeviceModel[]>(url).pipe(
       map((data) =>
-        data.map((el) => ({
-          ...el,
-          cleanId: DeviceHelper.parseId(el?.id),
-        })).sort((a, b) => b.updated - a.updated)
+        data
+          .map((el) => ({
+            ...el,
+            cleanId: DeviceHelper.parseId(el?.id),
+          }))
+          .sort((a, b) => b.updated - a.updated)
       )
     );
   }
@@ -28,12 +30,12 @@ export class DeviceService {
 
   getDeviceById(id) {
     const url = environment.api + 'assets/' + id;
-    return this.httpClient.get<DeviceModel>(url).pipe(map(el => (
-      {
+    return this.httpClient.get<DeviceModel>(url).pipe(
+      map((el) => ({
         ...el,
-        cleanId: DeviceHelper.parseId(el?.id)
-      }
-    )));
+        cleanId: DeviceHelper.parseId(el?.id),
+      }))
+    );
   }
 
   createDevice(payload) {
@@ -43,10 +45,23 @@ export class DeviceService {
 
   grantAccess(id: string, thirdUser: string) {
     const url = environment.api + 'assets/' + id + '/grant-access';
-    return this.httpClient.post<DeviceModel>(url, {thirdUser});
+    return this.httpClient.post<DeviceModel>(url, { thirdUser });
   }
   revokeAccess(id: string, thirdUser: string) {
     const url = environment.api + 'assets/' + id + '/revoke-access';
-    return this.httpClient.post<DeviceModel>(url, {thirdUser});
+    return this.httpClient.post<DeviceModel>(url, { thirdUser });
+  }
+  getHistory(id: string) {
+    const url = environment.api + 'assets/' + id + '/history';
+    return this.httpClient.get<DeviceModel[]>(url).pipe(
+      map((history) =>
+        history.map((step) => ({
+          ...step,
+          mode: DeviceHelper.methodName(step.mode),
+          cleanId: DeviceHelper.parseId(step?.id),
+          sharedWithArr: DeviceHelper.toArr(step?.sharedWith)
+        }))
+      )
+    );
   }
 }

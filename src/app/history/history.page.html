@@ -3,50 +3,34 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Historico</ion-title>
+    <ion-title>Histórico</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-text color="medium">
+    <p style="font-size: 1.1rem; margin-bottom: 0;">
+      Histórico do dispositivo {{id}}
+    </p>
+  </ion-text>
   <div class="container">
-    <div class="timeline">
+    <div class="timeline" *ngFor="let step of history">
       <div class="timeline-left">
         <div class="timeline-icon">
           <ion-icon slot="start" name="time-outline" color="light"></ion-icon>
         </div>
       </div>
       <div class="timeline-content">
-        <p class="title">Title</p>
-        <p class="update-time">Garantir acesso, 15/06/2021 às 13:30 </p>
-        <p class="shared-with">Autorizados: <strong>foo, bar e xpto</strong></p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, quam inventore neque aliquam pariatur numquam vel explicabo eveniet adipisci blanditiis, ducimus autem minima voluptatibus laborum tenetur molestiae quaerat quos doloremque.</p>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="timeline-left">
-        <div class="timeline-icon">
-          <ion-icon slot="start" name="time-outline" color="light"></ion-icon>
+        <p class="title">{{step.mode}}</p>
+        <p class="update-time">às {{step.updated | date : 'dd/MM/yyyy hh:mm'}} </p>
+        <p class="description">Autor: {{step.requester}} <small *ngIf="isOwner(step)">(Proprietário)</small></p>
+        <p class="description">identificador: {{step?.cleanId}}</p>
+        <p class="description">Descrição: {{step.sharedDataDescription}}</p>
+        <div *ngIf="step?.sharedWithArr?.length">
+          <p class="description" style="margin-bottom: 0;">Autorizados:</p>
+          <ion-badge color="medium" mode="ios" *ngFor="let item of step.sharedWithArr">
+            {{item}}
+          </ion-badge>
         </div>
-      </div>
-      <div class="timeline-content">
-        <p class="title">Title</p>
-        <p class="update-time">Garantir acesso, 15/06/2021 às 13:30 </p>
-        <p class="shared-with">Autorizados: <strong>foo, bar e xpto</strong></p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, quam inventore neque aliquam pariatur numquam vel explicabo eveniet adipisci blanditiis, ducimus autem minima voluptatibus laborum tenetur molestiae quaerat quos doloremque.</p>
-      </div>
-    </div>
-
-    <div class="timeline">
-      <div class="timeline-left">
-        <div class="timeline-icon">
-          <ion-icon slot="start" name="time-outline" color="light"></ion-icon>
-        </div>
-      </div>
-      <div class="timeline-content">
-        <p class="title">Title</p>
-        <p class="update-time">Garantir acesso, 15/06/2021 às 13:30 </p>
-        <p class="shared-with">Autorizados: <strong>foo, bar e xpto</strong></p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, quam inventore neque aliquam pariatur numquam vel explicabo eveniet adipisci blanditiis, ducimus autem minima voluptatibus laborum tenetur molestiae quaerat quos doloremque.</p>
       </div>
     </div>
   </div>
