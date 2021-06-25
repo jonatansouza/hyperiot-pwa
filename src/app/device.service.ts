@@ -64,4 +64,23 @@ export class DeviceService {
       )
     );
   }
+
+  sharedWithMe() {
+    const url = environment.api + 'assets/shared-with-me';
+    return this.httpClient.get<DeviceModel[]>(url).pipe(
+      map((shared) =>
+        shared.map((step) => ({
+          ...step,
+          mode: DeviceHelper.methodName(step.mode),
+          cleanId: DeviceHelper.parseId(step?.id),
+          sharedWithArr: DeviceHelper.toArr(step?.sharedWith)
+        }))
+      )
+    );
+  }
+
+  requestPermission(id: string) {
+    const url = environment.api + 'assets/' + id + '/request-permission';
+    return this.httpClient.post<DeviceModel[]>(url, {});
+  }
 }

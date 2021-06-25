@@ -20,4 +20,9 @@ export class DeviceHelper {
     };
     return methods[method] || 'Desconhecido';
   }
+
+  public static getPermissionStatus(permission: number) {
+    const options = ['', 'Acesso Permitido', 'Acesso Negado', 'N/A'];
+    return options[permission];
+  }
 }

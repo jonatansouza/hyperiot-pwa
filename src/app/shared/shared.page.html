@@ -9,7 +9,7 @@
 <ion-content>
   <div class="container">
     <ion-list>
-      <ion-item button (click)="requestPermission()">
+      <ion-item button (click)="requestPermission(shared.id)" *ngFor="let shared of sharedList">
         <ion-avatar >
           <div class="rounded-center">
             <ion-icon name="folder-outline"></ion-icon>
@@ -17,14 +17,18 @@
         </ion-avatar>
         <ion-label>
           <span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            ID: {{shared.cleanId}}
           </span>
           <br>
           <span>
-            Compartilhado por: Jonatan (j@gmail.com)
+            Descrição: {{shared.sharedDataDescription}}
           </span>
           <br>
-          <small style="color: #c3c3c3;">Última modificação: 10/12/2021</small>
+          <span>
+            Compartilhado por: {{shared.ownerId}}
+          </span>
+          <br>
+          <small style="color: #c3c3c3;">Última modificação: {{shared.updated | date : 'dd/MM/yyyy hh:mm'}}</small>
         </ion-label>
       </ion-item>
     </ion-list>

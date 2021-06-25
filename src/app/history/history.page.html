@@ -21,7 +21,12 @@
       </div>
       <div class="timeline-content">
         <p class="title">{{step.mode}}</p>
-        <p class="update-time">às {{step.updated | date : 'dd/MM/yyyy hh:mm'}} </p>
+        <p class="update-time">às {{step.updated | date : 'dd/MM/yyyy hh:mm'}}
+
+          <ion-chip size="small" [color]="getStatusColor(step.permission)" mode="ios" outline="true">
+            <ion-label>{{getStatus(step.permission)}}</ion-label>
+          </ion-chip>
+        </p>
         <p class="description">Autor: {{step.requester}} <small *ngIf="isOwner(step)">(Proprietário)</small></p>
         <p class="description">identificador: {{step?.cleanId}}</p>
         <p class="description">Descrição: {{step.sharedDataDescription}}</p>

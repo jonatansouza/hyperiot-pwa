@@ -1,3 +1,4 @@
+import { DeviceHelper } from './../device.helper';
 import { DeviceModel } from './../device.model';
 import { DeviceService } from './../device.service';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -32,5 +33,17 @@ export class HistoryPage {
   }
   isOwner(step: DeviceModel) {
     return (step.ownerId === step.requester);
+  }
+  getStatus(permission: number) {
+    return DeviceHelper.getPermissionStatus(permission);
+  }
+  getStatusColor(permission: number) {
+    if(permission === 1) {
+      return 'success';
+    }
+    if(permission === 2) {
+      return 'danger';
+    }
+    return 'medium';
   }
 }
