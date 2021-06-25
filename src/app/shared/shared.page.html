@@ -8,6 +8,7 @@
 </ion-header>
 <ion-content>
   <div class="container">
+    <p *ngIf="!sharedList?.length" style="color: gray; text-align: center; margin-top: 100px;">Nenhum dado compartilhado <br> <small>Solicite ao proprietário</small></p>
     <ion-list>
       <ion-item button (click)="requestPermission(shared.id)" *ngFor="let shared of sharedList">
         <ion-avatar >
