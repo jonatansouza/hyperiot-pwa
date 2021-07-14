@@ -41,7 +41,7 @@ export class DeviceDetailPage {
   }
 
   async revoke(email) {
-    const confirm = await this.interaction.showAlert('Revogar acesso!', 'Tem certeza que deseja revogar acesso de xpto?');
+    const confirm = await this.interaction.showAlert('Revogar acesso!', 'Tem certeza que deseja revogar acesso de '+email + '?');
     if(!confirm) {
       return;
     }
