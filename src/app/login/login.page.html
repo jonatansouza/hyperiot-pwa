@@ -10,7 +10,7 @@
     </ion-item>
     <div class="footer">
       <a (click)="forgot()">Esqueceu sua senha?</a>
-      <ion-button [disabled]="!email.valid || !password.valid">Entrar</ion-button>
+      <ion-button [disabled]="!email.valid || !password.valid" (click)="login()">Entrar</ion-button>
       <ion-button fill="outline" (click)="register()">Cadastrar-se</ion-button>
     </div>
   </div>
