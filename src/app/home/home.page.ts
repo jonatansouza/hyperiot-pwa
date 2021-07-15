@@ -2,13 +2,15 @@ import { DeviceHelper } from './../device.helper';
 import { DeviceService } from './../device.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
+  subs: Subscription[] = [];
   devices = [
   ];
   constructor(
@@ -16,10 +18,10 @@ export class HomePage implements OnInit {
     public deviceService: DeviceService,
   ) { }
 
-  ngOnInit() {
-    this.deviceService.getDevices().subscribe((res: any) => {
+  ionViewWillEnter(){
+    this.subs.push(this.deviceService.getDevices().subscribe((res: any) => {
       this.devices = res;
-    });
+    }));
   }
 
   detail({id}) {
@@ -27,6 +29,13 @@ export class HomePage implements OnInit {
   }
   create() {
     this.router.navigate(['create-device']);
+  }
+
+  ionViewWillLeave(){
+    while(this.subs.length) {
+      const sub = this.subs.pop();
+      sub.unsubscribe();
+    }
   }
 
 }

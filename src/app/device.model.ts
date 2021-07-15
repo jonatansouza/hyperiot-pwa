@@ -9,4 +9,6 @@ export interface DeviceModel {
   cleanId?: string;
   sharedDataDescription?: string;
   sharedWithArr?: string[];
+  bucket?: string;
+  resourceLocation: string;
 }

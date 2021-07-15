@@ -49,7 +49,9 @@ export class CreateDevicePage implements OnInit {
   async save() {
     const payload = {
       sharedDataId: this.id.value,
-      sharedDataDescription: this.description.value
+      sharedDataDescription: this.description.value,
+      bucket: this.bucket.value,
+      resourceLocation: this.location.value
     };
     try {
       const result = await this.deviceService.createDevice(payload).toPromise();
