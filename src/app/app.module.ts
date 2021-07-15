@@ -1,3 +1,4 @@
+import { RegisterPage } from './register/register.page';
 import { HttpConfigInterceptor } from './auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage, HistoryPage, SharedPage],
+  declarations: [AppComponent, HomePage, DeviceDetailPage, CreateDevicePage, LoginPage, HistoryPage, SharedPage, RegisterPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule ,ReactiveFormsModule, HttpClientModule],
   providers: [

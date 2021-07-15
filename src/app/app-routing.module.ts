@@ -5,6 +5,7 @@ import { DeviceDetailPage } from './device-detail/device-detail.page';
 import { HistoryPage } from './history/history.page';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
+import { RegisterPage } from './register/register.page';
 import { SharedPage } from './shared/shared.page';
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPage
+  },
+  {
+    path: 'register',
+    component: RegisterPage
   }
 ];
 

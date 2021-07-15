@@ -2,9 +2,13 @@
   <div class="light-box">
     <div class="light-box-title">
       <h1 style="text-align: center;">
-        Login
+        Cadastro
       </h1>
     </div>
+    <ion-item>
+      <ion-label position="stacked">Nome Completo</ion-label>
+      <ion-input [formControl]="name" placeholder="Jhon Doe" type="email" clearInput></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
       <ion-input [formControl]="email" placeholder="Jhon@example.com" type="email" clearInput></ion-input>
@@ -14,9 +18,7 @@
       <ion-input [formControl]="password" placeholder="Digite sua senha" type="password" clearInput></ion-input>
     </ion-item>
     <div class="footer">
-      <a (click)="forgot()">Esqueceu sua senha?</a>
-      <ion-button [disabled]="!email.valid || !password.valid" (click)="login()">Entrar</ion-button>
-      <ion-button fill="outline" (click)="register()">Cadastrar-se</ion-button>
+      <ion-button [disabled]="!email.valid || !password.valid" (click)="register()">Cadastrar</ion-button>
     </div>
   </div>
 </ion-content>
