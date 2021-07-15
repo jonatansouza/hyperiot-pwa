@@ -14,6 +14,11 @@ export class LoginPage {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   constructor(public router: Router, public http: HttpClient, public utils: UserInteractionsService, public userService: UserService) {}
+  ionViewWillEnter(){
+    localStorage.removeItem('jwt_token');
+    localStorage.removeItem('user');
+  }
+
   forgot() {}
   register() {}
   login() {
