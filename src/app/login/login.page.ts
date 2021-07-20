@@ -20,7 +20,9 @@ export class LoginPage {
   }
 
   forgot() {}
-  register() {}
+  register() {
+    this.router.navigate(['register']);
+  }
   login() {
     const email = this.email.value;
     const password = this.password.value;

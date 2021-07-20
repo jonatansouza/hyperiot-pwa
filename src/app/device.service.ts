@@ -2,11 +2,13 @@ import { DeviceModel } from './device.model';
 import { DeviceHelper } from './device.helper';
 import { environment } from './../environments/environment.prod';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { map, tap, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class DeviceService {
+  loading = false;
+  progress = '';
   constructor(private httpClient: HttpClient) {}
 
   getDevices() {
@@ -59,7 +61,7 @@ export class DeviceService {
           ...step,
           mode: DeviceHelper.methodName(step.mode),
           cleanId: DeviceHelper.parseId(step?.id),
-          sharedWithArr: DeviceHelper.toArr(step?.sharedWith)
+          sharedWithArr: DeviceHelper.toArr(step?.sharedWith),
         }))
       )
     );
@@ -73,14 +75,46 @@ export class DeviceService {
           ...step,
           mode: DeviceHelper.methodName(step.mode),
           cleanId: DeviceHelper.parseId(step?.id),
-          sharedWithArr: DeviceHelper.toArr(step?.sharedWith)
+          sharedWithArr: DeviceHelper.toArr(step?.sharedWith),
         }))
       )
     );
   }
 
   requestPermission(id: string) {
+    this.loading = true;
     const url = environment.api + 'assets/' + id + '/request-permission';
-    return this.httpClient.post<DeviceModel[]>(url, {});
+    return this.httpClient
+      .post(
+        url,
+        {},
+        {
+          responseType: 'arraybuffer',
+          reportProgress: true,
+          observe: 'events',
+        }
+      )
+      .pipe(tap((res) => this.reportProgress(res)), catchError(e => {
+        this.loading = false;
+        return throwError(e);
+      }));
+  }
+  downloadFile(data: any, filename: string) {
+    const blob = new Blob([data.body], { type: 'application/zip' });
+    const url = window.URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.setAttribute('download', filename);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  }
+  reportProgress(event) {
+    if (event.type === HttpEventType.DownloadProgress) {
+      this.progress = (event.loaded  / 1024 / 1024).toFixed(3);
+      this.loading = true;
+    }
+    if (event.type === HttpEventType.Response) {
+      this.loading = false;
+    }
   }
 }

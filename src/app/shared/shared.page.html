@@ -10,7 +10,7 @@
   <div class="container">
     <p *ngIf="!sharedList?.length" style="color: gray; text-align: center; margin-top: 100px;">Nenhum dado compartilhado <br> <small>Solicite ao proprietário</small></p>
     <ion-list>
-      <ion-item button (click)="requestPermission(shared.id)" *ngFor="let shared of sharedList">
+      <ion-item button (click)="requestPermission(shared)" *ngFor="let shared of sharedList">
         <ion-avatar >
           <div class="rounded-center">
             <ion-icon name="folder-outline"></ion-icon>
@@ -35,3 +35,10 @@
     </ion-list>
   </div>
 </ion-content>
+<div class="loading" *ngIf="device.loading">
+  <div class="loading-box">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    <p style="text-align: center; margin-bottom: 0;">Realizando o download</p>
+    <p style="margin-top: 4px; font-size: 0.8rem; color: gray;">Total baixado: {{device.progress}} MB</p>
+  </div>
+</div>

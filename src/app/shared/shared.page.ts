@@ -22,19 +22,19 @@ export class SharedPage implements OnInit {
     });
   }
 
-  async requestPermission(id: string) {
+  async requestPermission(shared) {
     const result = await this.interaction.presentOptionsOnActionSheet([{
       text: 'Solicitar acesso',
       handler: () => {
-        this.submitPermission(id);
+        this.submitPermission(shared);
       }
     }]);
   }
 
-  async submitPermission(id: string) {
+  async submitPermission(shared) {
     try {
-      const result = await this.device.requestPermission(id).toPromise();
-      console.log(result);
+      const result = await this.device.requestPermission(shared.id).toPromise();
+      this.device.downloadFile(result, shared.cleanId);
       this.interaction.presentToast('Acesso permitido!');
     } catch(e) {
       console.log(e);
