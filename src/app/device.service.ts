@@ -81,13 +81,13 @@ export class DeviceService {
     );
   }
 
-  requestPermission(id: string) {
+  requestPermission(id: string, ownerId: string) {
     this.loading = true;
     const url = environment.api + 'assets/' + id + '/request-permission';
     return this.httpClient
       .post(
         url,
-        {},
+        {ownerId},
         {
           responseType: 'arraybuffer',
           reportProgress: true,

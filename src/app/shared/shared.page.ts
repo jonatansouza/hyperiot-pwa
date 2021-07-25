@@ -31,10 +31,10 @@ export class SharedPage implements OnInit {
     }]);
   }
 
-  async submitPermission(shared) {
+  async submitPermission({id, ownerId, cleanId}) {
     try {
-      const result = await this.device.requestPermission(shared.id).toPromise();
-      this.device.downloadFile(result, shared.cleanId);
+      const result = await this.device.requestPermission(id, ownerId).toPromise();
+      this.device.downloadFile(result, cleanId);
       this.interaction.presentToast('Acesso permitido!');
     } catch(e) {
       console.log(e);
