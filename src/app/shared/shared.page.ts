@@ -18,7 +18,7 @@ export class SharedPage implements OnInit {
 
   ngOnInit() {
     this.device.sharedWithMe().subscribe( sharedList => {
-      this.sharedList = sharedList;
+      this.sharedList = sharedList.sort((a, b) => b.updated - a.updated);
     });
   }
 

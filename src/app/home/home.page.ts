@@ -20,7 +20,7 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.subs.push(this.deviceService.getDevices().subscribe((res: any) => {
-      this.devices = res;
+      this.devices = res.sort((a, b) => b.updated - a.updated);
     }));
   }
 
